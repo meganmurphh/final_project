@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html>
+<style>
+code {
+  background-color: #f1f1f1;
+  padding: 2px;
+  font-size: 105%;
+}
+</style>
+	<h1>Work that I'm Most Proud of</h1>
+		<p>
+			It still amazes me that I am able to do so many things with a computer, 
+			especially since my mind was set on the fact that IT was going to be too hard 
+			for me. The following block of code is from a python project that I submitted 
+			for my IT 1040 class. I'm proud of this code because it was one of the most
+			difficult assignments I've done for the class, and I'm proud because I was
+			able to overcome obstacles and submit a working program that reads a <code>.csv
+			</code>file and parses through it to provide data.
+			</p>
+<hr>
+		<p><pre>
+import pandas as pd
+
+def categories(column_names, df):
+    category = df.groupby("Category")
+    for purchase_type, purchase_type_df in category:
+        print("Cost of Purchases in each Category:")
+        print("-----------------------------------------")
+        print(category.sum())
+        print("")
+
+        print("Number of Purchases for each Category:")
+        print("-------------------------------------------")
+        print(category.count())
+        print("")
+        break
+
+def avg_purch(column_names, df):
+    size = 0
+    costs = df["Cost"].tolist()
+    total_costs = sum(costs)
+    print("Total costs: ${0:5.2f}".format(total_costs))
+    print("")
+
+    purchases = df['Cost'].tolist()
+    total_purch = len(purchases)
+    print("Number of Purchases:",total_purch)
+    print("")
+
+    converted_costs = int(total_costs)
+    converted_purch = int(total_purch)
+    avg = converted_costs / converted_purch
+    print("Average Costs: ${0:5.2f}".format(avg))
+
+def max_min(df, column_names):
+    df_numeric = df.set_index("Category").select_dtypes('number')
+    idx = df_numeric.idxmax()
+    maxcost = df["Cost"].max()
+    idxmin = df_numeric.idxmin()
+    mincost = df["Cost"].min()
+
+    print("The most expensive purchase was ${0:.2f}".format(maxcost),"in",idx)
+    print("The least expensive purchase was ${0:.2f}".format(mincost),"in",idxmin)
+
+def main():
+    column_names = ["Category", "Cost"]
+    while True:
+        try:
+            file = input("Enter csv file to read: ")
+            df = pd.read_csv(file, names=column_names)
+            print("")
+            avg_purch(column_names, df)
+            print("")
+            categories(column_names, df)
+            max_min(df, column_names)
+            print("")
+            response = input("Would you like to read another file? (y/n) ")
+            if (response == "y"):
+                continue
+            if (response == "n"):
+                break
+        except Exception as error:
+            print(error)
+
+main()
+</pre></p>
+</hr>
+
+<p>
+	While this code may look messy to someone more advanced in this topic, I'm proud to 
+	say that I was able to create something like this and hope that someday I'll be able 
+	to create something that is actually useful to someone, something that improves 
+	everyday life.
+	</p>
+<p><b>Previous Page:</b> <a href="page5.html">My Time at Mizzou</a></p>
+</html>
+    
+
+	
